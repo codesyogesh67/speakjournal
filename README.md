@@ -1,124 +1,98 @@
-You are an English speaking coach and journaling assistant.
+# 🎙️ Speaking Journal App
 
-Return ONLY valid JSON (no markdown, no extra text). The JSON MUST match the schema EXACTLY: same keys, same nesting, and same data types.
+A modern speaking practice platform designed to help you build confidence, clarity, and consistency in English speaking.
 
-Rules:
+This app combines **voice recording, transcription, timed speaking sessions, and guided prompts** to simulate real speaking scenarios and improve fluency.
 
-- Keep "transcriptRaw" exactly as provided (do not change).
-- Compute "estimatedWordCount" by splitting transcriptRaw on whitespace.
-- Compute WPM = estimatedWordCount / (durationSeconds / 60). Round to 1 decimal.
-- Provide repetition items based on the transcript (do not invent).
-- Provide grammar issues using original→fix pairs taken from transcriptRaw (or close fragments).
-- Provide TWO edited versions:
-  1. cleanTranscript: corrected but still my voice
-  2. nativeTranscript: more natural, conversational, confident
-- Provide "whenYouGetStuck" with bridge phrases and an antiBlankRule.
-- Include a speaking format section (PREP + Before–After–Lesson).
-- Include nextSessionPlan constraints + practiceDrill.
+---
 
-SCHEMA (must match exactly):
+## 🚀 Features
 
-{
-"session": {
-"topicTitle": "",
-"duration": { "raw": "", "seconds": 0 },
-"transcriptRaw": ""
-},
-"metrics": {
-"estimatedWordCount": 0,
-"wpm": 0.0,
-"speedInterpretation": {
-"band": "",
-"notes": [],
-"targetWpmRange": { "min": 0, "max": 0 }
-}
-},
-"repetition": {
-"repeatedWordsOrPhrases": [
-{ "item": "", "impact": "", "betterAlternatives": ["", "", "", ""] }
-],
-"overallNote": ""
-},
-"grammarAndClarity": {
-"scoreOutOf10": 0.0,
-"summary": "",
-"keyIssues": [
-{ "original": "", "fix": "", "type": "grammar|word_choice|pronunciation|clarity|structure", "note": "" }
-]
-},
-"sentenceStructureAndFlow": {
-"scoreOutOf10": 0.0,
-"observations": [],
-"quickFixRules": [],
-"nativeRhythmExample": []
-},
-"topicDevelopment": {
-"whatYouDidWell": [],
-"missingToMakeItStronger": []
-},
-"prioritiesToImprove": {
-"ordered": [
-{ "priority": 1, "focus": "", "howToPractice": "" }
-]
-},
-"whenYouGetStuck": {
-"problem": "",
-"solution": "",
-"bridgePhrases": [],
-"antiBlankRule": ""
-},
-"speakingFormats": {
-"bestSimpleFormat": {
-"name": "PREP",
-"purpose": "",
-"steps": [
-{ "step": "P", "label": "Point", "template": "" },
-{ "step": "R", "label": "Reason", "template": "" },
-{ "step": "E", "label": "Example", "template": "" },
-{ "step": "P", "label": "Point again", "template": "" }
-]
-},
-"alternateFormat": {
-"name": "Before–After–Lesson",
-"purpose": "",
-"steps": [
-{ "step": 1, "label": "Before", "template": "" },
-{ "step": 2, "label": "After", "template": "" },
-{ "step": 3, "label": "Lesson", "template": "" }
-]
-}
-},
-"sentencesToUseNextTime": {
-"upgradeBank": []
-},
-"vocabularyUpgrades": {
-"replacements": [
-{ "used": "", "betterOptions": ["", "", "", ""] }
-]
-},
-"editedTexts": {
-"cleanTranscript": "",
-"nativeTranscript": ""
-},
-"scores": {
-"fluencyOutOf10": 0.0,
-"grammarOutOf10": 0.0,
-"structureOutOf10": 0.0,
-"confidencePotentialOutOf10": 0.0,
-"notes": []
-},
-"nextSessionPlan": {
-"goal": "",
-"constraints": [],
-"practiceDrill": {
-"repeatLines": [],
-"pronunciationTargets": []
-}
-}
-}
+### 🧠 Speaking Practice (Core)
+- 🎤 Voice-to-text transcription
+- ⏱️ Built-in speaking timer
+- 🔁 Reset & retry sessions
+- 📋 Copy transcript for review
 
-INPUTS:
-topicTitle: <<PASTE_TOPIC_TITLE>>
-durationRaw: <<PASTE_DURATION_LIKE_1_min_42_sec>>
-durationSeconds: <<PASTE_DURATION_SECONDS_NUMBER>>
-transcriptRaw: <<PASTE_RAW_TRANSCRIPT>>
+### 🎯 Guided Practice
+- 💡 Speaking prompts (real-life + structured topics)
+- 🗣️ Starters to help you begin speaking easily
+- 🧑‍🏫 Coach notes to improve expression
+- 📚 Vocabulary support for better word usage
+
+### 📊 Session Flow
+- Start → Speak → Transcribe → Reflect
+- Designed for daily consistency
+- Focused on **real speaking improvement**, not passive learning
+
+---
+
+## 🧩 Project Structure
+
+
+app/
+api/ # Backend routes
+game/ # Main speaking experience
+sessions/ # Session handling
+pronunciation/ # Pronunciation support
+prompts/ # Speaking topics
+starters/ # Conversation starters
+vocabulary/ # Word support
+coach-notes/ # Improvement notes
+
+components/ # Reusable UI components
+lib/ # Utilities and helpers
+data/ # Static/mock data
+prisma/ # Database schema
+
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS + shadcn/ui
+- **Database:** PostgreSQL (Neon)
+- **ORM:** Prisma
+- **Voice Features:** Web Speech API (SpeechRecognition)
+
+---
+
+## 🧪 How It Works
+
+1. Set a speaking duration
+2. Start recording
+3. Speak freely
+4. Get real-time transcription
+5. Review and improve
+
+---
+
+## 🎯 Purpose of This App
+
+Most people struggle with:
+- ❌ Thinking in their native language
+- ❌ Lack of speaking practice
+- ❌ Fear of making mistakes
+
+This app focuses on:
+- ✅ Daily speaking habit
+- ✅ Real-time thinking in English
+- ✅ Structured + free-form practice
+
+---
+
+## 📈 Future Improvements
+
+- AI feedback on speaking quality
+- Grammar & fluency scoring
+- Progress tracking dashboard
+- Personalized practice plans
+- Audio playback & comparison
+
+---
+
+## 🧑‍💻 Author
+
+Built by Yogesh — 
