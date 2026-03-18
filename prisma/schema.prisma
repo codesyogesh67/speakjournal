@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  topic         String
+  durationSec   Int
+  transcriptRaw String
+
+  transcriptClean  String?
+  transcriptNative String?
+  estimatedWords   Int?
+  wpm              Float?
+  analysisJson     Json?
+
+  journalJson Json? // ✅ add this
+
+  @@index([createdAt])
+}
+
+model Prompt {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  title    String
+  category String?
+  content  String
+
+  @@index([createdAt])
+}
+
+model CoachNote {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  title    String
+  category String?
+  content  String
+  isPinned Boolean @default(false)
+
+  @@index([createdAt])
+}
